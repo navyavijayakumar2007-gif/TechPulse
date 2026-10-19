@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="TechPulse - A centralized multi-source technical news aggregation and information portal for developers, students, and tech enthusiasts.">
+  <title>TechPulse – Technical News Aggregation Portal</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <!-- Style Sheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- HEADER & NAVIGATION -->
+  <header class="navbar" id="header">
+    <div class="nav-container">
+      
+      <!-- Brand Logo -->
+      <a href="#home" class="brand-logo" id="logo-link">
+        <div class="logo-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+          </svg>
+        </div>
+        <span class="logo-text">Tech<span class="highlight">Pulse</span></span>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="nav-links" id="nav-menu">
+        <a href="#home" class="nav-item active" id="nav-home">Home</a>
+        <a href="#news-section" class="nav-item" id="nav-categories">Categories</a>
+        <button class="nav-item btn-bookmark-view" id="nav-bookmarks">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+          </svg>
+          Bookmarks
+          <span class="bookmark-badge" id="bookmark-count">0</span>
+        </button>
+      </nav>
+
+      <!-- Right Action Bar: Search Box & Theme Toggle -->
+      <div class="nav-actions">
+        <!-- Dynamic Header Search Input -->
+        <div class="search-box">
+          <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" id="header-search-input" placeholder="Search news, topics..." aria-label="Search technical news">
+          <button class="clear-search-btn" id="clear-search-btn" aria-label="Clear search">&times;</button>
+        </div>
+
+        <!-- Dark/Light Theme Switcher -->
+        <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle dark and light theme" title="Switch Theme">
+          <span class="theme-icon moon-icon">🌙</span>
+          <span class="theme-icon sun-icon">☀️</span>
+        </button>
+
+        <!-- Mobile Hamburger Toggle -->
+        <button class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Open menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero-section" id="home">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-badge">⚡ Live Multi-Source Tech Aggregator</div>
+      <h1 class="hero-title">Stay Updated. <span class="gradient-text">Stay Ahead.</span></h1>
+      <p class="hero-subtitle">
+        Your centralized portal for the latest technology news, innovations, careers and emerging trends across global tech ecosystems.
+      </p>
+      
+      <!-- CTA Buttons -->
+      <div class="hero-buttons">
+        <a href="#news-section" class="btn btn-primary" id="hero-explore-btn">
+          Explore Latest News
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <polyline points="19 12 12 19 5 12"></polyline>
+          </svg>
+        </a>
+        <button class="btn btn-secondary" id="hero-bookmarks-btn">
+          View Saved Articles
+        </button>
+      </div>
+
+      <!-- Quick Metrics Bar -->
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-number">24+</span>
+          <span class="stat-label">Curated Articles</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-number">8</span>
+          <span class="stat-label">Tech Categories</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-number">10+</span>
+          <span class="stat-label">Verified Sources</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT: NEWS & FILTERS -->
+  <main class="main-container" id="news-section">
+    
+    <!-- Section Header & Filter Controls -->
+    <div class="section-header">
+      <div class="section-title-wrap">
+        <div class="section-title-row">
+          <h2 class="section-title" id="section-heading">Latest Technical News</h2>
+          <span class="total-news-badge" id="news-count-badge">24 Articles</span>
+        </div>
+        <p class="section-subtitle" id="section-subheading">Browsing top stories from leading tech publications</p>
+      </div>
+      
+      <!-- Search Status Indicator -->
+      <div class="search-status" id="search-status-bar" style="display: none;">
+        <span>Showing results for: <strong id="search-query-display">""</strong></span>
+        <button id="reset-search-btn" class="btn-text">Reset Search</button>
+      </div>
+    </div>
+
+    <!-- Category Filter Pills Bar -->
+    <div class="category-filters-container">
+      <div class="category-scroll-wrapper" id="category-pills">
+        <button class="category-pill active" data-category="All">All News <span class="pill-count" id="count-all">24</span></button>
+        <button class="category-pill" data-category="AI & Machine Learning">🤖 AI &amp; ML <span class="pill-count" id="count-ai">3</span></button>
+        <button class="category-pill" data-category="Career & Jobs">💼 Career &amp; Jobs <span class="pill-count" id="count-careers">3</span></button>
+        <button class="category-pill" data-category="Tech & IT Companies">🏢 Tech Companies <span class="pill-count" id="count-companies">3</span></button>
+        <button class="category-pill" data-category="New Inventions">💡 Inventions <span class="pill-count" id="count-inventions">3</span></button>
+        <button class="category-pill" data-category="Silicon Valley">🌉 Silicon Valley <span class="pill-count" id="count-silicon">3</span></button>
+        <button class="category-pill" data-category="Indian Technology News">🇮🇳 India Tech <span class="pill-count" id="count-india">3</span></button>
+        <button class="category-pill" data-category="World Technology News">🌐 World Tech <span class="pill-count" id="count-world">3</span></button>
+        <button class="category-pill" data-category="DevOps & Cloud">☁️ DevOps &amp; Cloud <span class="pill-count" id="count-devops">3</span></button>
+        <button class="category-pill bookmark-pill" data-category="Bookmarks">🔖 Bookmarks <span class="pill-count" id="count-bookmarks">0</span></button>
+      </div>
+    </div>
+
+    <!-- DYNAMIC NEWS GRID -->
+    <div class="news-grid" id="news-grid">
+      <!-- News cards rendered dynamically via JavaScript -->
+    </div>
+
+    <!-- EMPTY SEARCH / BOOKMARK STATE -->
+    <div class="empty-state" id="empty-state" style="display: none;">
+      <div class="empty-icon">🔍</div>
+      <h3 class="empty-title" id="empty-title">No news found matching your search.</h3>
+      <p class="empty-desc" id="empty-desc">Try checking for typos or searching for broader terms like "AI", "Cloud", or "Python".</p>
+      <button class="btn btn-primary" id="empty-reset-btn">View All News</button>
+    </div>
+
+  </main>
+
+  <!-- ARTICLE DETAILS MODAL POPUP -->
+  <div class="modal-overlay" id="article-modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-card">
+      
+      <!-- Close Button -->
+      <button class="modal-close-btn" id="modal-close-btn" aria-label="Close modal">&times;</button>
+      
+      <!-- Modal Header Image -->
+      <div class="modal-image-wrapper">
+        <img id="modal-img" src="" alt="News Image">
+        <span class="category-badge modal-badge" id="modal-category">Category</span>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="modal-body">
+        
+        <!-- Meta Details -->
+        <div class="modal-meta">
+          <span class="meta-source" id="modal-source">Source Name</span>
+          <span class="meta-dot">•</span>
+          <span class="meta-date" id="modal-date">Date</span>
+        </div>
+
+        <!-- Headline -->
+        <h2 class="modal-headline" id="modal-headline">Article Headline Goes Here</h2>
+
+        <!-- Full Summary Content -->
+        <div class="modal-content" id="modal-content">
+          <!-- Article text dynamically inserted -->
+        </div>
+
+        <!-- Action Footer -->
+        <div class="modal-actions">
+          <button class="btn btn-bookmark" id="modal-bookmark-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+            </svg>
+            <span id="modal-bookmark-text">Bookmark Article</span>
+          </button>
+
+          <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-primary" id="modal-external-link">
+            Read Original Article ↗
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <div class="brand-logo">
+          <div class="logo-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+            </svg>
+          </div>
+          <span class="logo-text">Tech<span class="highlight">Pulse</span></span>
+        </div>
+        <p class="footer-desc">
+          A modern technical news portal aggregating breaking innovations, career tips, AI breakthroughs, and engineering trends worldwide.
+        </p>
+        <div class="student-badge">
+          🎓 Academic CSE Project | 2nd-Year B.Tech Computer Science &amp; Engineering
+        </div>
+      </div>
+
+      <!-- Quick Category Footer Links -->
+      <div class="footer-links">
+        <h4 class="footer-heading">Categories</h4>
+        <ul class="footer-list">
+          <li><a href="#news-section" class="footer-cat-link" data-cat="AI & Machine Learning">AI &amp; Machine Learning</a></li>
+          <li><a href="#news-section" class="footer-cat-link" data-cat="Career & Jobs">Career &amp; Jobs</a></li>
+          <li><a href="#news-section" class="footer-cat-link" data-cat="Tech & IT Companies">Tech Companies</a></li>
+          <li><a href="#news-section" class="footer-cat-link" data-cat="New Inventions">New Inventions</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h4 class="footer-heading">More Topics</h4>
+        <ul class="footer-list">
+          <li><a href="#news-section" class="footer-cat-link" data-cat="Silicon Valley">Silicon Valley</a></li>
+          <li><a href="#news-section" class="footer-cat-link" data-cat="Indian Technology News">Indian Tech News</a></li>
+          <li><a href="#news-section" class="footer-cat-link" data-cat="World Technology News">World Tech News</a></li>
+          <li><a href="#news-section" class="footer-cat-link" data-cat="DevOps & Cloud">DevOps &amp; Cloud</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 TechPulse Portal. Built for Academic Presentation using HTML5, CSS3 &amp; Vanilla JavaScript.</p>
+    </div>
+  </footer>
+
+  <!-- BACK TO TOP FLOATING BUTTON -->
+  <button class="back-to-top-btn" id="back-to-top" aria-label="Scroll to top" title="Back to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </button>
+
+  <!-- Script File -->
+  <script src="script.js"></script>
+</body>
+</html>
