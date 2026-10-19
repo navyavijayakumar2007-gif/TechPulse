@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#030712"/>
+      <stop offset="50%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#1f2937"/>
+    </linearGradient>
+    <linearGradient id="worldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#a855f7"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#bgGrad)"/>
+  <!-- Globe & Satellite Orbits -->
+  <circle cx="400" cy="225" r="90" fill="none" stroke="url(#worldGrad)" stroke-width="3"/>
+  <ellipse cx="400" cy="225" rx="90" ry="35" fill="none" stroke="rgba(99, 102, 241, 0.5)" stroke-width="2"/>
+  <ellipse cx="400" cy="225" rx="35" ry="90" fill="none" stroke="rgba(168, 85, 247, 0.5)" stroke-width="2"/>
+  <!-- Orbiting Satellites -->
+  <circle cx="490" cy="225" r="8" fill="#818cf8"/>
+  <circle cx="400" cy="135" r="8" fill="#c084fc"/>
+  <!-- Label -->
+  <rect x="50" y="40" width="230" height="40" rx="8" fill="rgba(99, 102, 241, 0.2)" stroke="rgba(99, 102, 241, 0.4)"/>
+  <text x="165" y="65" fill="#818cf8" font-family="'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="700" text-anchor="middle">WORLD TECH NEWS</text>
+</svg>
