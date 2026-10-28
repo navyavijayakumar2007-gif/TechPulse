@@ -821,3 +821,34 @@ function setupEventListeners() {
 
 // Start application when DOM Content is fully loaded
 document.addEventListener("DOMContentLoaded", init);
+
+/* ==============================
+   TECH GLOSSARY SEARCH
+================================ */
+
+const glossarySearchInput = document.getElementById("glossary-search-input");
+const glossaryGrid = document.getElementById("glossary-grid");
+const glossaryEmpty = document.getElementById("glossary-empty");
+
+if (glossarySearchInput && glossaryGrid && glossaryEmpty) {
+  const glossaryCards = Array.from(
+    glossaryGrid.querySelectorAll(".glossary-card")
+  );
+
+  glossarySearchInput.addEventListener("input", function () {
+    const searchTerm = this.value.trim().toLowerCase();
+    let visibleCount = 0;
+
+    glossaryCards.forEach(function (card) {
+      const matches = card.textContent.toLowerCase().includes(searchTerm);
+
+      card.hidden = !matches;
+
+      if (matches) {
+        visibleCount++;
+      }
+    });
+
+    glossaryEmpty.hidden = visibleCount > 0;
+  });
+}
