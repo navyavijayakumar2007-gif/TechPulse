@@ -1125,3 +1125,118 @@ img {
 .news-card {
   animation: fadeInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) ease-out forwards;
 }
+
+/* ==============================
+   TECH GLOSSARY SECTION
+================================ */
+
+.tech-glossary {
+  max-width: 1200px;
+  margin: 60px auto;
+  padding: 30px 20px;
+  scroll-margin-top: 100px;
+}
+
+.glossary-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.glossary-header .section-tag {
+  display: inline-block;
+  color: var(--accent-cyan);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+.glossary-header h2 {
+  font-size: clamp(26px, 4vw, 38px);
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.glossary-header p {
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.glossary-search {
+  max-width: 500px;
+  margin: 0 auto 30px;
+}
+
+#glossary-search-input {
+  width: 100%;
+  padding: 14px 18px;
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  background: var(--bg-card);
+  color: var(--text-primary);
+  font: inherit;
+  outline: none;
+  box-sizing: border-box;
+}
+
+#glossary-search-input:focus {
+  border-color: var(--accent-cyan);
+}
+
+#glossary-search-input::placeholder {
+  color: var(--text-muted);
+}
+
+.glossary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.glossary-card {
+  padding: 24px;
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  background: var(--bg-card);
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.glossary-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-cyan);
+}
+
+.glossary-card h3 {
+  color: var(--accent-cyan);
+  font-size: 18px;
+  margin: 0 0 12px;
+  line-height: 1.5;
+}
+
+.glossary-card p {
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.8;
+  margin: 0;
+}
+
+.glossary-empty {
+  color: var(--text-secondary);
+  text-align: center;
+  padding: 20px;
+}
+
+@media (max-width: 600px) {
+  .tech-glossary {
+    margin: 35px auto;
+    padding: 24px 16px;
+  }
+
+  .glossary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .glossary-card {
+    padding: 20px;
+  }
+}
